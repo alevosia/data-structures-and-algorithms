@@ -187,6 +187,32 @@ class DoublyLinkedList {
 		return head
 	}
 
+	reverse() {
+		if (!this.head) return
+
+		let current = this.head
+
+		this.head = this.tail
+		this.tail = current
+
+		let prev, next
+
+		while (current) {
+			// get the previous and next nodes
+			prev = current.prev
+			next = current.next
+
+			// swap the previous and next nodes
+			current.prev = next
+			current.next = prev
+
+			// move to the next node
+			current = next
+		}
+
+		return this
+	}
+
 	traverse() {
 		let current = this.head
 
@@ -206,5 +232,5 @@ list.push('C')
 list.push('D')
 list.push('E')
 
-console.log(list.remove(14))
-console.timeEnd('Exec')
+list.reverse()
+list.traverse()
