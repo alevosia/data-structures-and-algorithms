@@ -197,18 +197,23 @@ class SinglyLinkedList {
 
 	reverse() {
 		// swap the head and tail
-		let node = this.head
+		let current = this.head
 		this.head = this.tail
-		this.tail = node
+		this.tail = current
 
-		let next
+		let next = null
 		let prev = null
 
 		for (var i = 0; i < this.length; i++) {
-			next = node.next // Save the next node
-			node.next = prev // Set the previous node as the next node
-			prev = node // Set the current node as the previous node
-			node = next // Set the next node as the current node
+			// Store next node
+			next = current.next
+
+			// Swap pointers
+			current.next = prev
+
+			// Move prev and current one step forward
+			prev = current
+			current = next
 		}
 
 		return this

@@ -195,19 +195,18 @@ class DoublyLinkedList {
 		this.head = this.tail
 		this.tail = current
 
-		let prev, next
+		let temp = null
 
 		while (current) {
-			// get the previous and next nodes
-			prev = current.prev
-			next = current.next
+			// store previous node
+			temp = current.prev
 
-			// swap the previous and next nodes
-			current.prev = next
-			current.next = prev
+			// Swap pointers
+			current.prev = current.next
+			current.next = temp
 
-			// move to the next node
-			current = next
+			// Move to the next node
+			current = current.prev
 		}
 
 		return this
