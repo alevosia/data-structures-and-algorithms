@@ -35,11 +35,20 @@ class Stack {
 		}
 
 		const removed = this.first
-
 		this.first = this.first.next
+		removed.next = null
 		this.size--
 
 		return removed.value
+	}
+
+	traverse() {
+		let current = this.first
+
+		while (current) {
+			console.log(current)
+			current = current.next
+		}
 	}
 }
 
